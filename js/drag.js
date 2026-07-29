@@ -91,11 +91,18 @@ function createDragClone(event,shape){
 
     dragClone.style.display = "grid";
 
+    // Get the actual board cell size
+    const firstCell = document.querySelector(".cell");
+
+    const cellSize = firstCell
+        ? firstCell.offsetWidth
+        : 30; // fallback if board isn't ready
+
     dragClone.style.gridTemplateColumns =
-    `repeat(${shape[0].length}, 30px)`;
+    `repeat(${shape[0].length}, ${cellSize}px)`;
 
     dragClone.style.gridTemplateRows =
-    `repeat(${shape.length}, 30px)`;
+    `repeat(${shape.length}, ${cellSize}px)`;
 
     dragClone.style.gap = "4px";
 
@@ -113,6 +120,8 @@ function createDragClone(event,shape){
         const block = document.createElement("div");
 
         block.className = "block";
+        block.style.width = `${cellSize}px`;
+    block.style.height = `${cellSize}px`;
 
         if(!value){
 
@@ -166,10 +175,9 @@ document.addEventListener(
 
 
 
-    const position =
-    getBoardPosition(
+    const position = getBoardPosition(
         event.clientX,
-        event.clientY
+        event.clientY - 60
     );
 
 
@@ -236,8 +244,6 @@ document.addEventListener(
 
 
     clearPreview();
-
-
 
     if(dragClone){
 
