@@ -323,9 +323,7 @@ body{
 }
 
 .block{
-
     width:22px;
-
     height:22px;
 
 }
@@ -617,9 +615,12 @@ body{
 
     pointer-events:none;
 
-    z-index:9999;
+    z-index:99999;
 
-    transform:translate(-50%,-50%);
+    transform:translate(-50%,-50%) scale(1.1);
+
+    opacity:.9;
+
 }
 
 .drag-clone .block{
@@ -752,5 +753,16 @@ body{
         opacity:1;
 
     }
+
+}
+
+.piece-slot{
+
+    touch-action:none;
+
+}
+.piece{
+
+    touch-action:none;
 
 }
